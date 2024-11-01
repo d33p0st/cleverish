@@ -1,0 +1,2 @@
+# Include all .pyi stub files in the package
+recursive-include src *.pyi
