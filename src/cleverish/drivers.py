@@ -4,11 +4,14 @@ from os import (
     makedirs,
     name as osname,
     environ,
-    geteuid,
     unlink,
     system as run,
     popen as get_output_of
 )
+
+if osname != 'nt':
+    from os import geteuid
+
 from os.path import join, basename, exists, dirname
 from typing import Union, Tuple, List, Dict
 from pathlib import Path
@@ -84,6 +87,7 @@ class DriverConfiguration:
         self._forceful_initialization: bool = False
         self._package_name: Union[str, None] = None
         self._package: bool = False
+        self._ws: bool = False
         self._tomler: Tomler
         self._to_add: Union[str, List[str], None,] = None
         self._upload_directory: Union[str, None] = None
@@ -105,6 +109,9 @@ class DriverConfiguration:
     
     def set_upload_directory(self, value: Union[str, None]) -> None:
         self._upload_directory = value
+    
+    def set_without_shell(self, value: bool) -> None:
+        self._ws = value
     
     @property
     def forceful_initialization(self) -> bool:
@@ -179,6 +186,18 @@ class DriverConfiguration:
     @upload_directory.deleter
     def upload_directory(self) -> None:
         self._upload_directory = None
+    
+    @property
+    def without_shell(self) -> bool:
+        return self._ws
+    
+    @without_shell.setter
+    def without_shell(self, v: bool) -> None:
+        self._ws = v
+    
+    @without_shell.deleter
+    def without_shell(self) -> None:
+        self._ws = False
 
 class _DriverMethods:
     @staticmethod
@@ -300,6 +319,7 @@ class Drivers:
         new_config.set_package_name(config.package_name)
         new_config.set_package_status(config.package)
         new_config.tomler = Tomler()
+        new_config.set_without_shell(config.without_shell)
         Drivers.create_environment(config=new_config) # create env too
         sys.exit(0)
     
@@ -339,8 +359,9 @@ class Drivers:
             print(f"{_.YELLOW}Skipped{_.RESET} {skipped} dependencies.")
         else:
             print(f"requirements {_.GREEN}Installed{_.RESET}")
-        
-        TerminalEmulator(env=interpreted_tomler.environment_name, bin_path=dirname(str(activator))).start
+
+        if not config.without_shell:
+            TerminalEmulator(env=interpreted_tomler.environment_name, bin_path=dirname(str(activator))).start
     
     @staticmethod
     def shell(config: DriverConfiguration) -> None:
@@ -725,7 +746,7 @@ class Drivers:
         DotLock.create(list_from_toml)
 
         # skipped status
-        print(f"{_.RED if len(ignored) > 0 else _.GREEN}Skipped{_.RESET} {len(ignored)} : {'\n' + '\n'.join(list(map(str, ignored)))}")
+        print(f"{_.RED if len(ignored) > 0 else _.GREEN}Skipped{_.RESET} {len(ignored)} : \n"+ '\n'.join(list(map(str, ignored))))
     
     @staticmethod
     def get_version_from_freeze(name: str, pip_path: Path) -> Union[str, None]:

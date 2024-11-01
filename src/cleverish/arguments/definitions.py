@@ -11,6 +11,7 @@ class ArgumentDefinition:
         "force": "-f",
         "name": "-n",
         "package": "-pkg",
+        "withoutshell": "-ws",
 
         # Install commad
         "install": "-in",

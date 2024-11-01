@@ -1,4 +1,4 @@
-argpi>=0.2.0
+argpi==0.2.0
 toml
 colorama
 prompt_toolkit
