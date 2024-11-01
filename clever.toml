@@ -1,0 +1,13 @@
+[config]
+environment_name = 'cleverish'
+
+[requirements]
+dependency_directory = 'deps'
+get-automatically = false
+
+[[requirements.list]]
+name = "maturin"
+
+[[requirements.list]]
+name = "modstore"
+version = "1.1.1"
