@@ -77,6 +77,8 @@
 
 ## Usage
 
+__NOTE:__ See the demo [`clever.toml`](clever.toml) file to know about the fields and values (For, `pypi` users, click [here](https://github.com/d33p0st/cleverish) to go to the repository and see the `clever.toml` file.)
+
 - __`Init`__
 
   Initializing a new project with clever comes with a few benefits, such as, defining if you are creating a package or just a simple project.
