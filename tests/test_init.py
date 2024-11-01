@@ -13,7 +13,7 @@ def test_init():
         chdir(join(tempdir, 'test'))
 
         # use simple init
-        system("clever init")
+        system("clever init -ws")
 
         assert exists(join(getcwd(), '.test'))
         assert exists(join(getcwd(), '.git'))
@@ -30,7 +30,7 @@ def test_init():
         chdir(join(tempdir, 'test'))
 
         # test init name
-        system('clever init name testing')
+        system('clever init name testing -ws')
 
         assert exists(join(getcwd(), '.testing'))
         assert exists(join(getcwd(), '.git'))
@@ -47,7 +47,7 @@ def test_init():
         makedirs(join(tempdir, 'test'))
         chdir(join(tempdir, 'test'))
 
-        system('clever init package')
+        system('clever init package -ws')
 
         # test init package
         assert exists(join(getcwd(), '.test'))

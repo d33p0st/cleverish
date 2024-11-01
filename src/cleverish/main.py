@@ -22,6 +22,8 @@ def clever():
 
     ###### INIT Functionality goes here ##########
 
+    function_pathways.register('withoutshell', driver_configuration.set_without_shell, False, FetchType.SINGULAR, True)
+
     ## get if force
     function_pathways.register('force', driver_configuration.set_force, False, FetchType.SINGULAR, True)
 
