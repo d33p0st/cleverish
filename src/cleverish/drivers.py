@@ -4,11 +4,14 @@ from os import (
     makedirs,
     name as osname,
     environ,
-    geteuid,
     unlink,
     system as run,
     popen as get_output_of
 )
+
+if osname != 'nt':
+    from os import geteuid
+
 from os.path import join, basename, exists, dirname
 from typing import Union, Tuple, List, Dict
 from pathlib import Path
