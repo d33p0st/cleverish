@@ -1,0 +1,48 @@
+name: Unit Tests
+
+on:
+    push:
+        branches:
+            - '*'
+            - '*/*'
+            - '**'
+
+permissions: read-all
+
+jobs:
+    Test:
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest, windows-latest]
+                python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+    
+        runs-on: ${{ matrix.os }}
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+            
+            - name: Setup Python v${{ matrix.python-version }}
+              uses: actions/setup-python@v4
+              with:
+                python-version: ${{ matrix.python-version }}
+            
+            - name: Install PyTest
+              run: pip install pytest pytest-cov
+            
+            - name: Install the current lib
+              run: pip install .
+            
+            - name: Run Test
+              run: pytest -v --cov --junitxml=junit.xml
+            
+            - name: Upload results to Codecov
+              uses: codecov/codecov-action@v4
+              with:
+                token: ${{ secrets.CODECOV_TOKEN }}
+            
+            - name: Upload test results to codecov
+              if: ${{ !cancelled() }}
+              uses: codecov/test-results-action@v1
+              with:
+                token: ${{ secrets.CODECOV_TOKEN }}
