@@ -1,0 +1,6 @@
+argpi
+toml
+colorama
+prompt_toolkit
+requests
+pytest
