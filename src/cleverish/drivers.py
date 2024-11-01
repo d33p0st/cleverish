@@ -27,7 +27,7 @@ from .utils.dotlock import DotLock
 class _ConstantTextContents:
 
     HELP = f"""{_.GREEN},-----------,{_.RESET} ,------------------,
-{_.GREEN}|{_.RESET} Help Text {_.GREEN}|{_.RESET}-| {_.BLUE}Cleverish{_.RESET} v{_.RED}0.0.1{_.RESET} |
+{_.GREEN}|{_.RESET} Help Text {_.GREEN}|{_.RESET}-| {_.BLUE}Cleverish{_.RESET} v{_.RED}0.0.2{_.RESET} |
 {_.GREEN}'-----------'{_.RESET} '------------------'
 
 Credits: Soumyo Deep Gupta (d33p0st (GitHub)) 2024
@@ -54,8 +54,27 @@ init (-i)            :  Initialize an empty project.
                         (-pkg) flag will be auto-added.
 
 add (-a)             :  Add a dependency.
-      {_.YELLOW}[OPTION-VALUES]{_.RESET}
-      This OPTION can take values in some formats I will add later.
+      Syntax: {_.BLUE}clever{_.RESET} add <package-name-1> <package-2> ...
+
+install (-in)        : Install all dependencies if not, update dot-lock
+                       and toml file with any shadow installed packages
+                       (packges that are installed but not added through
+                       cleverish.)
+
+      Syntax: {_.BLUE}clever{_.RESET} install
+
+shell (-sh)          : Activates the clever shell. with current project
+                       virtual environment. All bins like `pip` or `python`
+                       or any newly installed libs that contains callable
+                       bins, if called through clever shell will be searched
+                       in the project environment first and then global.
+
+build (-b)           : Build the project based on pyproject.toml and clever.toml
+                       leveraging the packages locked in dot-lock file.
+            
+upload (-u)          : Upload the package to PYPI.
+
+      Syntax: {_.BLUE}clever{_.RESET} upload <dist-folder-name-or-path>
 """
 
     PYPROJECT_TOML = """# Generated using Cleverish

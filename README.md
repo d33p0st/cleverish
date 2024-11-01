@@ -1,3 +1,9 @@
+[![Unit Tests](https://github.com/d33p0st/cleverish/actions/workflows/tests.yml/badge.svg)](https://github.com/d33p0st/cleverish/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/gh/d33p0st/cleverish/graph/badge.svg?token=03Z1C0X8KU)](https://codecov.io/gh/d33p0st/cleverish)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cleverish)
+![PyPI - Version](https://img.shields.io/pypi/v/cleverish)
+![Pepy Total Downloads](https://img.shields.io/pepy/dt/cleverish)
+
 # Overview
 
 `cleverish` is a dependency and environment handler for `python` projects. Inspired from `Cargo` (from `Rust` programming language), `cleverish` brings a few greatly attractive features like the [__`clever shell`__](#clever-shell). `cleverish` aims to handle all dependency problems so that you don't have to rattle your brain for it.
