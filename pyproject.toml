@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cleverish"
+version = "0.0.1"
+description = "Leave it to Cleverish, No more code breakage due to dependency. Dependency Handler"
+requires-python = ">=3.8"
+dependencies = ["argpi", "toml", "colorama", "prompt_toolkit", 'requests']
+readme = {file = "README.md", content-type = "text/markdown"}
+license = { file = "LICENSE" }
+authors = [
+    {name = "Soumyo Deep Gupta", email = "deep.main.ac@gmail.com"}
+]
+maintainers = [
+    {name = "Soumyo Deep Gupta", email = "deep.main.ac@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX :: Linux",
+    'Operating System :: Microsoft :: Windows',
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[tool.setuptools.package-data]
+"cleverish" = ["*.pyi"]
+
+# [tool.setuptools]
+# package-dir = {"" = "src"}  # If your source files are in a `src/` directory, otherwise omit this
+# packages = ["cleverish"]
+
+[project.scripts]
+clever = "cleverish:main.clever"
+
+[project.urls]
+Documentation = "https://d33p0st.in/documentation/libraries/cleverish/#libraries"
+GitHub = "https://github.com/d33p0st/cleverish"
+Pull-Requests = "https://github.com/d33p0st/cleverish/pulls"
+Issues = "https://github.com/d33p0st/cleverish/pulls"
