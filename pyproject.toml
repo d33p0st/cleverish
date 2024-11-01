@@ -7,7 +7,7 @@ name = "cleverish"
 version = "0.0.1"
 description = "Leave it to Cleverish, No more code breakage due to dependency. Dependency Handler"
 requires-python = ">=3.8"
-dependencies = ["argpi", "toml", "colorama", "prompt_toolkit", 'requests']
+dependencies = ["argpi>=0.2.0", "toml", "colorama", "prompt_toolkit", 'requests']
 readme = {file = "README.md", content-type = "text/markdown"}
 license = { file = "LICENSE" }
 authors = [
